@@ -24,3 +24,66 @@ let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
 
+let paddle1 = {
+    width: 25,
+    height: 100,
+    x: 0,
+    y: 0
+};
+let paddle2 = {
+    width: 25,
+    height: 100,
+    x: gameWidth - 25,
+    y: gameHeight - 100
+};
+
+window.addEventListener("keydown", changeDirection);
+resetBtn.addEventListener("click", resetGame);
+
+gameStart();
+// een functie om de te starten
+const gameStart = function(){
+
+
+};
+
+const nextTick = function(){
+
+};
+
+const clearBoard = function(){
+
+};
+// de game is in canvas gemaakt dus de game moet ge-drawed worden telkens.
+const drawPaddles = function(){
+
+};
+
+// teken de bal op het scherm
+const drawBall = function(){
+
+};
+// beweeg de bal op het scherm functie
+const moveBall = function(){
+
+};
+// create de bal.
+const createBall = function(){
+
+};
+// zorgt ervoor dat de bal niet bijvoorbeeld door de paddles heen gaat.
+const checkCollision = function(){
+
+};
+
+const changeDirection = function(){
+
+};
+// houdt de score bij.
+const updateScore = function(){
+
+};
+// reset de game wanneer de game op de knop drukt.
+const resetFunction = function(){
+
+};
