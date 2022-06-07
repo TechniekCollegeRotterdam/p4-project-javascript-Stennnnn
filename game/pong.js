@@ -21,4 +21,6 @@ let ballY = gameHeight / 2;
 let ballXDirection = 0;
 let ballYDirection = 0;
 // bij het begin van het spel is de score van zowel speler 1 als speler 2 natuurlijk 0, Dit is let want de score veranderd natuurlijk tijdens het spel.
+let player1Score = 0;
+let player2Score = 0;
 
