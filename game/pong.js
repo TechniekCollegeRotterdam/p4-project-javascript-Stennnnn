@@ -8,9 +8,12 @@ const gameWidth = gameBoard.gameWidth;
 const gameHeight = gameBoard.gameHeight;
 // kleuren van de game canvas en paddles.
 const gameBoardBackGroundColor = "black";
-const Paddle1Color = "white";
-const Paddle2Color = "white";
+const paddle1Color = "white";
+const paddle2Color = "white";
+const paddleBorder = "black";
 const ballColor = "white";
+const ballBorderColor = "black";
+const ballRadius = 12.5;
 // de snelheid van de game de snelheid van de ball is belangrijk zodat ik de game kan versnellen na elk punt.
 let intervalId;
 const paddleSpeed = 50;
@@ -40,7 +43,10 @@ let paddle2 = {
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
 
+// roep de functies op want functies werken pas wanneer je ze oproept.
 gameStart();
+drawPaddles();
+
 // een functie om de te starten
 const gameStart = function(){
 
@@ -56,7 +62,9 @@ const clearBoard = function(){
 };
 // de game is in canvas gemaakt dus de game moet ge-drawed worden telkens.
 const drawPaddles = function(){
-
+    ctx.strokeStyle = paddleBorder;
+    ctx.fillStyle = paddle1Color;
+    ctx.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
 };
 
 // teken de bal op het scherm
