@@ -1,21 +1,32 @@
 // select canvas element
 const canvas = document.getElementById("pong");
-
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
 const ctx = canvas.getContext('2d');
+// de start knop ophalen.
+let startButton = document.getElementById("start");
 
-// load sounds
+
+ctx.font = "30px Arial";
+ctx.color = "red";
+ctx.fillText("Druk op een toets om Pong te spelen!", 50, 200); 
+
+
+
+const gameStart = function(){
+    console.log("click");
+    // load sounds
 let hit = new Audio();
 let wall = new Audio();
 let userScore = new Audio();
 let comScore = new Audio();
 
-hit.src = "sounds/hit.mp3";
-wall.src = "sounds/wall.mp3";
-comScore.src = "sounds/comScore.mp3";
-userScore.src = "sounds/userScore.mp3";
+// geluids effecten als de functie wordt aangeroepen dus bijvoorbeeld als je het balletje raakt.
+hit.src = "sounds/bounce.mp3";
+wall.src = "sounds/bounce.mp3";
+comScore.src = "sounds/missed.mp3";
+userScore.src = "sounds/win.mp3";
 
-// Ball object
+// de ball zelf als hoe die op het canvas verschijnt.
 const ball = {
     x : canvas.width/2,
     y : canvas.height/2,
@@ -26,9 +37,9 @@ const ball = {
     color : "AQUA"
 }
 
-// User Paddle
+// het streepje als gebruiker als hoe hij op het canvas verschijnt.
 const user = {
-    x : 0, // left side of canvas
+    x : 0, // zorgt ervoor dat hij links blijft staan in de canvas
     y : (canvas.height - 100)/2, // -100 the height of paddle
     width : 10,
     height : 100,
@@ -185,7 +196,7 @@ function render(){
     // draw the COM score to the right
     drawText(com.score,3*canvas.width/4,canvas.height/5);
     
-    // draw the net
+    // voer de functie drawNet uit, die een net laat verschijnen in het midden van het canvas.
     drawNet();
     
     // draw the user's paddle
@@ -206,3 +217,6 @@ let framePerSecond = 50;
 
 //call the game function 50 times every 1 Sec
 let loop = setInterval(game,1000/framePerSecond);
+}
+
+
