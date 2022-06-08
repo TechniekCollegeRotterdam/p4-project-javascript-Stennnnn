@@ -8,30 +8,15 @@ body{
     min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
+    background-color: dimgray;
 }
 /* game styling */
-
-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-#gameContainer{
-    text-align: center;
-}
-#gameBoard{
-    border: 2px solid black;
-}
-#score{
-    font-family: "consolas", monospace;
-    font-size: 3rem;
-}
-#resetBtn{
-    font-family: "permanent marker", cursive;
-    font-size: 1.25rem;
-    cursor: pointer;
-}
-#resetBtn:hover{
-    border: 3px solid black;
-    border-radius: 5px;
+#pong{
+    border: 2px solid #FFF;
+    position: absolute;
+    margin :auto;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
 }
