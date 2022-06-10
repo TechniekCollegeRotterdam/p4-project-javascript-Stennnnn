@@ -1,18 +1,21 @@
-// select canvas element
+// selecteer de canvas element.
 const canvas = document.getElementById("pong");
-// getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
+// haal de context op "2d" zodat we 2d objecten kunnen tekeken op het canvas.
 const ctx = canvas.getContext("2d");
 // de start knop ophalen.
-
 let body = (document.querySelector("body").style.backgroundColor = "lightblue");
 
+/* start scherm tekst laten drawen op het canvas.
+verder staan er font-sizes en margins in */
 ctx.font = "30px Arial";
 ctx.color = "red";
 ctx.fillText("Click on the canvas to play Pong!", 80, 200);
 
 const startGame = function () {
+  /* hieronder wordt ervoor gezorgd dat je niet nog een keer left-click kunt doen op de canvas, 
+    dit zorgde voor een bug dat je meerdere games in dezelfde canvas kunt aanzetten.*/
   canvas.removeEventListener("click", startGame);
-  // load sounds
+  // koppel de audio aan variabelen
   let hit = new Audio();
   let wall = new Audio();
   let userScore = new Audio();
@@ -38,7 +41,7 @@ const startGame = function () {
   // het streepje als gebruiker als hoe hij op het canvas verschijnt.
   const user = {
     x: 0, // zorgt ervoor dat hij links blijft staan in de canvas
-    y: (canvas.height - 100) / 2, // -100 the height of paddle
+    y: (canvas.height - 100) / 2, // -100 grootte van de speler
     width: 10,
     height: 100,
     score: 0,
@@ -47,15 +50,15 @@ const startGame = function () {
 
   // COM Paddle
   const com = {
-    x: canvas.width - 10, // - width of paddle
-    y: (canvas.height - 100) / 2, // -100 the height of paddle
+    x: canvas.width - 10, // - de breedte van de speler
+    y: (canvas.height - 100) / 2, // -100 de hoogte van de speler
     width: 10,
     height: 100,
     score: 0,
     color: "AQUA",
   };
 
-  // NET
+  // hieronder zetten we de breedte en andere properties van het net in het midden.
   const net = {
     x: (canvas.width - 2) / 2,
     y: 0,
@@ -64,13 +67,13 @@ const startGame = function () {
     color: "AQUA",
   };
 
-  // draw a rectangle, will be used to draw paddles
+  // teken een rechthoek op het canvas. hiermee worden de spelers gemaakt op het canvas.
   function drawRect(x, y, w, h, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, w, h);
   }
 
-  // draw circle, will be used to draw the ball
+  // teken het balletje op het canvas.
   function drawArc(x, y, r, color) {
     ctx.fillStyle = color;
     ctx.beginPath();
@@ -79,7 +82,7 @@ const startGame = function () {
     ctx.fill();
   }
 
-  // listening to the mouse
+  // 
   canvas.addEventListener("mousemove", getMousePos);
 
   function getMousePos(evt) {
