@@ -3,18 +3,17 @@ const canvas = document.getElementById("pong");
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
 const ctx = canvas.getContext('2d');
 // de start knop ophalen.
-let startButton = document.getElementById("start");
 
+
+let body = document.querySelector('body').style.backgroundColor = 'lightblue';
 
 ctx.font = "30px Arial";
 ctx.color = "red";
-ctx.fillText("Druk op een toets om Pong te spelen!", 50, 200); 
+ctx.fillText("Click on the canvas to play Pong!", 80, 200); 
 
 
-
-const gameStart = function(){
-    console.log("click");
-    // load sounds
+const startGame = function(){
+// load sounds
 let hit = new Audio();
 let wall = new Audio();
 let userScore = new Audio();
@@ -86,7 +85,6 @@ canvas.addEventListener("mousemove", getMousePos);
 
 function getMousePos(evt){
     let rect = canvas.getBoundingClientRect();
-    
     user.y = evt.clientY - rect.top - user.height/2;
 }
 
@@ -216,7 +214,8 @@ function game(){
 let framePerSecond = 50;
 
 //call the game function 50 times every 1 Sec
-let loop = setInterval(game,1000/framePerSecond);
+let loop = setInterval(game,1000/framePerSecond);   
 }
+canvas.addEventListener('click', startGame);
 
 
