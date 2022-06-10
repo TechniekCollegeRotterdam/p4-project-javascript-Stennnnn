@@ -222,3 +222,5 @@ const startGame = function () {
   let loop = setInterval(game, 1000 / framePerSecond);
 };
 canvas.addEventListener("click", startGame);
+
+//Het ziet er goed uit stan, ga zo door!!!
