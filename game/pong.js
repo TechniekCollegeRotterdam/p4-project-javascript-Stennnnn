@@ -1,3 +1,9 @@
+// 1 gebruik meer comments die meer beschrijven.
+// bepaalde teksten staan in het engels in de game zwelf en sommige zijn nederlands. dit zijn twee tegen door elkaar heen.
+
+// tops:
+/* de code heeft een goede structuur waarin er goed genest is. verder zijn je variabel namen ook goed. je maakt gebruik van functies op de goede plek. */
+
 // select canvas element
 const canvas = document.getElementById("pong");
 // getContext of canvas = methods and properties to draw and do a lot of thing to the canvas
