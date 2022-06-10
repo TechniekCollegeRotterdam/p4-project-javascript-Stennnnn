@@ -13,6 +13,7 @@ ctx.fillText("Click on the canvas to play Pong!", 80, 200);
 
 
 const startGame = function(){
+canvas.removeEventListener('click', startGame);
 // load sounds
 let hit = new Audio();
 let wall = new Audio();
