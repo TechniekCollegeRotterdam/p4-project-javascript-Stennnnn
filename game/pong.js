@@ -82,9 +82,8 @@ const startGame = function () {
     ctx.fill();
   }
 
-  // 
+  // pak de muis positie voor muis-gameplay
   canvas.addEventListener("mousemove", getMousePos);
-
   function getMousePos(evt) {
     let rect = canvas.getBoundingClientRect();
     user.y = evt.clientY - rect.top - user.height / 2;
@@ -216,7 +215,7 @@ const startGame = function () {
     render();
   }
   // number of frames per second
-  let framePerSecond = 50;
+  let framePerSecond = 120;
 
   //call the game function 50 times every 1 Sec
   let loop = setInterval(game, 1000 / framePerSecond);
