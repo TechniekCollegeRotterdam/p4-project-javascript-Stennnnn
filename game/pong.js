@@ -1,6 +1,6 @@
 // selecteer de canvas element.
 const canvas = document.getElementById("pong");
-// haal de context op "2d" zodat we 2d objecten kunnen tekeken op het canvas.
+// haal de context op "2d" zodat we 2d objecten kunnen tekenen op het canvas.
 const ctx = canvas.getContext("2d");
 // de start knop ophalen.
 let body = (document.querySelector("body").style.backgroundColor = "lightblue");
@@ -89,7 +89,7 @@ const startGame = function () {
     user.y = evt.clientY - rect.top - user.height / 2;
   }
 
-  // when COM or USER scores, we reset the ball
+  // Als er gescoord wordt dan resetten we de bal.
   function resetBall() {
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
@@ -97,21 +97,21 @@ const startGame = function () {
     ball.speed = 7;
   }
 
-  // draw the net
+  // Het midden raster tekenen
   function drawNet() {
     for (let i = 0; i <= canvas.height; i += 15) {
       drawRect(net.x, net.y + i, net.width, net.height, net.color);
     }
   }
 
-  // draw text
+  // Tekst op het canvas verschijnen
   function drawText(text, x, y) {
     ctx.fillStyle = "#FFF";
     ctx.font = "75px fantasy";
     ctx.fillText(text, x, y);
   }
 
-  // collision detection
+  //
   function collision(b, p) {
     p.top = p.y;
     p.bottom = p.y + p.height;
@@ -131,7 +131,8 @@ const startGame = function () {
     );
   }
 
-  // update function, the function that does all calculations
+  /* De update functie, De game werkt op een canvas en een canvas moet telkens opnieuw gedrawed worden. 
+  In deze functie worden alle game-berekeningen gemaakt. */
   function update() {
     // Hier wordt bepaald of de conmputer of de speler een punt krijgt.
     if (ball.x - ball.radius < 0) {
@@ -148,24 +149,24 @@ const startGame = function () {
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
 
-    // computer plays for itself, and we must be able to beat it
-    // simple AI
+    /* De computer speler. Snelheid van de bot staat op 0.1,
+     want hij moet niet te moeilijk zijn.  */
     com.y += (ball.y - (com.y + com.height / 2)) * 0.1;
 
-    // when the ball collides with bottom and top walls we inverse the y velocity.
+    // Wanneer de bal de bovenkant of onderkant aantikt, Dan wordt de bal teruggekaatst in de tegenovergestelde richting.
     if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
       ball.velocityY = -ball.velocityY;
       wall.play();
     }
 
-    // we check if the paddle hit the user or the com paddle
+    // Of het balletje de computer aantikt of de paddle van de speler.
     let player = ball.x + ball.radius < canvas.width / 2 ? user : com;
 
-    // if the ball hits a paddle
+    // Als de ball de paddle aantikt.
     if (collision(ball, player)) {
       // play sound
       hit.play();
-      // we check where the ball hits the paddle
+      // Waar raakt het balletje de paddle?
       let collidePoint = ball.y - (player.y + player.height / 2);
       // normalize the value of collidePoint, we need to get numbers between -1 and 1.
       // -player.height/2 < collide Point < player.height/2
@@ -187,9 +188,9 @@ const startGame = function () {
     }
   }
 
-  // render function, the function that does al the drawing
+  // De functie die al het tekenen op het canvas doet. 
   function render() {
-    // clear the canvas
+    // Het canvas leegmaken voor de volgende render.
     drawRect(0, 0, canvas.width, canvas.height, "#000");
 
     // draw the user score to the left
@@ -201,7 +202,7 @@ const startGame = function () {
     // voer de functie drawNet uit, die een net laat verschijnen in het midden van het canvas.
     drawNet();
 
-    // draw the user's paddle
+    // de paddle van de speler neerzetten. met de hoogte, breedte, en kleur.
     drawRect(user.x, user.y, user.width, user.height, user.color);
 
     // draw the COM's paddle
@@ -214,10 +215,10 @@ const startGame = function () {
     update();
     render();
   }
-  // number of frames per second
+  // fps
   let framePerSecond = 120;
 
-  //call the game function 50 times every 1 Sec
+  // Elke seconde de game functie 50 keer oproepen.
   let loop = setInterval(game, 1000 / framePerSecond);
 };
 canvas.addEventListener("click", startGame);
