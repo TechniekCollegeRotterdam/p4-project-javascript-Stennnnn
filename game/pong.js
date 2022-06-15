@@ -168,22 +168,18 @@ const startGame = function () {
       hit.play();
       // Waar raakt het balletje de paddle?
       let collidePoint = ball.y - (player.y + player.height / 2);
-      // normalize the value of collidePoint, we need to get numbers between -1 and 1.
-      // -player.height/2 < collide Point < player.height/2
+      // de collidepoint normaliseren
       collidePoint = collidePoint / (player.height / 2);
 
-      // when the ball hits the top of a paddle we want the ball, to take a -45degees angle
-      // when the ball hits the center of the paddle we want the ball to take a 0degrees angle
-      // when the ball hits the bottom of the paddle we want the ball to take a 45degrees
-      // Math.PI/4 = 45degrees
+      // hieronder wordt gekeken waar het balletje objecten raakt en dan wordt vervolgens het balletje terug weerkaatst in de tegenovergestelde richting.
       let angleRad = (Math.PI / 4) * collidePoint;
 
-      // change the X and Y velocity direction
+      // verander de X en Y van het balletje
       let direction = ball.x + ball.radius < canvas.width / 2 ? 1 : -1;
       ball.velocityX = direction * ball.speed * Math.cos(angleRad);
       ball.velocityY = ball.speed * Math.sin(angleRad);
 
-      // speed up the ball everytime a paddle hits it.
+      // Elke keer als we het balletje aantikken. maken we het balletje sneller
       ball.speed += 0.1;
     }
   }
