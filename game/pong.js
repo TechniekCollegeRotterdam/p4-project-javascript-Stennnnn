@@ -180,7 +180,7 @@ const startGame = function () {
       ball.velocityY = ball.speed * Math.sin(angleRad);
 
       // Elke keer als we het balletje aantikken. maken we het balletje sneller
-      ball.speed += 0.1;
+      ball.speed += 0.3;
     }
   }
 
