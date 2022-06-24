@@ -24,3 +24,6 @@ Five gameplay components:
 
 To fork the the gamefiles you go to my repository and click 'Fork' in the upper right corner of the repo dashboard. 
 Now github will create a copy of the gamefiles and put them in a new repository for you to use. You may pull them from the cloned repo.
+
+<h2>Pull request</h2>
+https://github.com/Stennnnn/p4-javascriptgame-Julian/pull/1
